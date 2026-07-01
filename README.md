@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="book_cover_image.png" alt="Book cover — Nephi and the Desert Promise: A Book of 1 Nephi" width="600">
+</p>
+
 # THE LONG WAY HOME
 ### The Story of Nephi and His Family
 
@@ -17,6 +21,11 @@ So find a cozy spot. We are about to take the long way home.
 ---
 
 ## Chapter 1: The Pillar of Fire
+
+<p align="center">
+  <img src="images/chapter_1.png" alt="Lehi kneels before a pillar of heavenly fire while Nephi secretly watches from the hillside outside Jerusalem." width="760"><br>
+  <em>Lehi kneels before a pillar of heavenly fire while Nephi secretly watches from the hillside.</em>
+</p>
 
 Something was wrong with Jerusalem.
 
@@ -121,6 +130,11 @@ And somehow, that frightened Nephi most of all.
 ---
 
 ## Chapter 2: The Warning
+
+<p align="center">
+  <img src="images/chapter_2.png" alt="Lehi tells his family they must leave Jerusalem and abandon everything they own." width="760"><br>
+  <em>Lehi tells his family they must leave Jerusalem and abandon everything they own.</em>
+</p>
 
 The next morning, Lehi did the bravest — and most dangerous — thing Nephi had ever seen.
 
@@ -236,6 +250,11 @@ Because God was not finished giving commandments.
 
 ## Chapter 3: I Will Go and Do
 
+<p align="center">
+  <img src="images/chapter_3.png" alt="Nephi and his brothers begin the dangerous journey back to Jerusalem to retrieve the brass plates." width="760"><br>
+  <em>Nephi and his brothers begin the dangerous journey back to Jerusalem for the brass plates.</em>
+</p>
+
 Lehi loved the little valley so much that he decided to give everything in it a name.
 
 "This river," he announced, "I'll call Laman." He put his hand on his oldest son's shoulder. "Laman — I wish you could be like this river. Always running toward God, and never stopping."
@@ -321,6 +340,11 @@ And so, the very next day, the four brothers set out — back toward the city th
 ---
 
 ## Chapter 4: The Angel in the Cave
+
+<p align="center">
+  <img src="images/chapter_4.png" alt="A brilliant angel appears in a dark cave after Laman and Lemuel attack Nephi and Sam." width="760"><br>
+  <em>A brilliant angel appears in the dark cave after Laman and Lemuel attack Nephi and Sam.</em>
+</p>
 
 Outside the walls of Jerusalem, the brothers stopped to make a plan.
 
@@ -418,6 +442,11 @@ And this time, he would go alone.
 
 ## Chapter 5: The Bravest Night
 
+<p align="center">
+  <img src="images/chapter_5.png" alt="Lehi joyfully examines the recovered brass plates while the family gathers around him." width="760"><br>
+  <em>Lehi joyfully examines the recovered brass plates as the family gathers around him.</em>
+</p>
+
 The city was fast asleep.
 
 Nephi crept through the dark, empty streets, his heart drumming. He had no plan. He didn't know what would happen next.
@@ -499,6 +528,11 @@ Just as he said he would.
 ---
 
 ## Chapter 6: The Ropes
+
+<p align="center">
+  <img src="images/chapter_6.png" alt="Nephi miraculously breaks free from his bonds as Ishmael's daughter steps forward to protect him." width="760"><br>
+  <em>Nephi breaks free from his ropes as Ishmael's daughter steps forward to protect him.</em>
+</p>
 
 You'd think that after all that, the family could finally rest.
 
@@ -586,6 +620,11 @@ He leaned in close. The firelight danced on every face.
 
 ## Chapter 7: The Tree of Life
 
+<p align="center">
+  <img src="images/chapter_7.png" alt="Lehi tells his dream around the campfire as the glowing Tree of Life, iron rod, and great building appear in the vision above." width="760"><br>
+  <em>Lehi tells his dream by the campfire as the Tree of Life, iron rod, and great building appear above.</em>
+</p>
+
 Everyone leaned in. Even the crickets seemed to hush.
 
 "In my dream," Lehi began, "I was walking in a dark and empty place, all alone. I walked for hours. I couldn't find my way. So I prayed. And then — I saw it."
@@ -649,6 +688,11 @@ And Nephi meant to hold on to that iron rod, with both hands, for the rest of hi
 ---
 
 ## Chapter 8: The Shining Ball
+
+<p align="center">
+  <img src="images/chapter_8.png" alt="The family gathers in amazement as Lehi discovers the miraculous Liahona outside his tent." width="760"><br>
+  <em>The family marvels as Lehi discovers the miraculous Liahona outside his tent.</em>
+</p>
 
 One morning, Lehi stepped out of his tent — and stopped.
 
@@ -728,6 +772,11 @@ The crash and the roar of ocean waves.
 
 ## Chapter 9: Building the Ship
 
+<p align="center">
+  <img src="images/chapter_9.png" alt="Nephi boldly defends God's command while a massive ship rises behind him on the shores of Bountiful." width="760"><br>
+  <em>Nephi boldly defends God's command as the great ship rises on the shores of Bountiful.</em>
+</p>
+
 The land by the sea was so beautiful that the family named it Bountiful — because it had everything.
 
 Fruit trees. Wild honey. Fresh water. And a wide, sparkling ocean that stretched all the way to the edge of the world.
@@ -803,6 +852,11 @@ Nephi smiled up at his ship. Then he looked out at the endless, glittering sea.
 ---
 
 ## Chapter 10: The Storm at Sea
+
+<p align="center">
+  <img src="images/chapter_10.png" alt="A violent storm batters the ship as Nephi prays and the terrified family struggles against the waves." width="760"><br>
+  <em>A violent storm batters the ship as Nephi prays and the terrified family struggles against the waves.</em>
+</p>
 
 They packed the ship with everything they'd need — fruit, meat, honey, and seeds to plant in the new land.
 
@@ -885,6 +939,11 @@ Green hills. Golden shores. Rising right up out of the sea.
 The promised land.
 
 Their new home.
+
+<p align="center">
+  <img src="images/chapter_10_2.png" alt="The family rejoices aboard the ship as they finally spot the promised land after years of wandering." width="760"><br>
+  <em>The family rejoices aboard the ship as they finally spot the promised land after years of wandering.</em>
+</p>
 
 They ran the ship up onto the beach, and everyone tumbled out onto solid ground, laughing and crying and hugging. They fell to their knees in the warm sand and thanked God with all their hearts.
 
