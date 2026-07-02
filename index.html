@@ -4,7 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#e9ddc2">
-<title>The Long Way Home — 1 Nephi</title>
+<title>Nephi and The Long Way Home — 1 Nephi</title>
+<meta property="og:type" content="book">
+<meta property="og:title" content="Nephi and The Long Way Home">
+<meta property="og:site_name" content="Book of Mormon Adventures">
+<meta property="og:description" content="The story of Nephi from the Book of Mormon, retold for young readers. Read it like a book — swipe, tap, turn the page.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nephi and The Long Way Home — book cover">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nephi and The Long Way Home">
+<meta name="twitter:description" content="The story of Nephi from the Book of Mormon, retold for young readers.">
+<meta name="twitter:image" content="og-image.png">
+<meta name="description" content="The story of Nephi from the Book of Mormon, retold for young readers. Read it like a book.">
 <style>
   :root{
     --paper:#f4ecd7;
@@ -39,7 +52,9 @@
     justify-content:space-between;padding-left:16px;padding-right:16px;position:relative;
     background:linear-gradient(#e9ddc2,#efe6cd);
   }
-  #chaptitle{max-width:80%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;}
+  #chaptitle{flex:1;text-align:center;margin:0 8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;}
+  #toc-hint{flex:0 0 auto;font-size:15px;color:var(--muted);}
+  #bar-bot{cursor:pointer;}
   #pageno{font-variant-numeric:tabular-nums;}
   #progress{position:absolute;left:0;top:0;height:2px;background:var(--accent);width:0;transition:width .25s ease;}
 
@@ -94,6 +109,26 @@
   #hint .row{display:flex;gap:1.4em;justify-content:center;margin:1.1em 0 .3em;font-size:.9em;opacity:.9;}
   #hint b{color:#f4d79a;}
   #hint.hide{opacity:0;pointer-events:none;}
+
+  /* table of contents */
+  #toc{position:fixed;inset:0;z-index:30;display:flex;align-items:flex-end;justify-content:center;
+       background:rgba(30,22,10,.55);transition:opacity .25s;}
+  #toc.toc-hidden{opacity:0;pointer-events:none;}
+  #toc-panel{width:100%;max-width:640px;max-height:78vh;display:flex;flex-direction:column;
+       background:var(--paper);border-radius:16px 16px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.4);
+       padding-bottom:env(safe-area-inset-bottom,0px);
+       transition:transform .28s cubic-bezier(.22,.61,.36,1);}
+  #toc.toc-hidden #toc-panel{transform:translateY(100%);}
+  #toc-head{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+       padding:16px 20px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+       color:var(--muted);font-weight:700;border-bottom:1px solid rgba(120,90,40,.18);}
+  #toc-close{font-size:20px;padding:2px 8px;color:var(--muted);}
+  #toc-list{list-style:none;margin:0;padding:6px 0;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  #toc-list li{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+       padding:14px 22px;font-size:1.06rem;color:var(--ink);border-bottom:1px solid rgba(120,90,40,.08);}
+  #toc-list li:active{background:rgba(184,134,59,.16);}
+  #toc-list li.current{color:var(--accent);font-weight:700;}
+  #toc-list li .pg{flex:0 0 auto;font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums;}
 </style>
 </head>
 <body>
@@ -421,9 +456,17 @@
 
   <footer id="bar-bot">
     <div id="progress"></div>
+    <span id="toc-hint">☰</span>
     <span id="chaptitle">Cover</span>
     <span id="pageno">1 / 1</span>
   </footer>
+
+  <div id="toc" class="toc-hidden">
+    <div id="toc-panel">
+      <div id="toc-head"><span>Contents</span><span id="toc-close">✕</span></div>
+      <ul id="toc-list"></ul>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -434,6 +477,9 @@
   var elPage   = document.getElementById('pageno');
   var elProg   = document.getElementById('progress');
   var hint     = document.getElementById('hint');
+  var toc      = document.getElementById('toc');
+  var tocList  = document.getElementById('toc-list');
+  var elBot    = document.getElementById('bar-bot');
 
   var MX = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--mx')) || 22;
   var pageStep = 1, totalPages = 1, current = 0;
@@ -468,7 +514,7 @@
       var x = (r.left - crect.left);
       var pg = Math.round(x / pageStep);
       var label = hs[k].getAttribute('data-short') || hs[k].textContent.trim();
-      headings.push({page:pg, title:label});
+      headings.push({page:pg, title:label, full:hs[k].textContent.trim(), tag:hs[k].tagName});
     }
     // restore position by fraction
     current = Math.round(prevFrac * (totalPages-1)) || 0;
@@ -512,6 +558,32 @@
     }catch(e){}
   }
 
+  // ---------- table of contents ----------
+  function buildTOC(){
+    tocList.innerHTML = '';
+    var entries = [{page:0, label:'Cover'}];
+    for(var k=0;k<headings.length;k++){
+      if(headings[k].tag === 'H1') continue;
+      entries.push({page:headings[k].page, label:headings[k].full});
+    }
+    var curIdx = 0;
+    for(var i=0;i<entries.length;i++){ if(entries[i].page <= current) curIdx = i; }
+    entries.forEach(function(e, i){
+      var li = document.createElement('li');
+      if(i === curIdx) li.className = 'current';
+      var t = document.createElement('span'); t.textContent = e.label;
+      var p = document.createElement('span'); p.className = 'pg'; p.textContent = e.page + 1;
+      li.appendChild(t); li.appendChild(p);
+      li.addEventListener('click', function(ev){ ev.stopPropagation(); go(e.page); closeTOC(); });
+      tocList.appendChild(li);
+    });
+  }
+  function openTOC(){ buildTOC(); toc.classList.remove('toc-hidden'); }
+  function closeTOC(){ toc.classList.add('toc-hidden'); }
+  elBot.addEventListener('click', openTOC);
+  toc.addEventListener('click', function(e){ if(e.target === toc) closeTOC(); });
+  document.getElementById('toc-close').addEventListener('click', function(e){ e.stopPropagation(); closeTOC(); });
+
   // ---------- input ----------
   var sx=0, sy=0, st=0, moved=false, active=false;
   var SWIPE=42, TAPMOVE=12;
@@ -540,6 +612,7 @@
   viewport.addEventListener('dragstart', function(e){ e.preventDefault(); });
 
   document.addEventListener('keydown', function(e){
+    if(!toc.classList.contains('toc-hidden')){ if(e.key==='Escape') closeTOC(); return; }
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ next(); e.preventDefault(); }
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){ prev(); e.preventDefault(); }
     else if(e.key==='Home'){ go(0); }
