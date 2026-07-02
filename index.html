@@ -9,14 +9,15 @@
 <meta property="og:title" content="Nephi and The Long Way Home">
 <meta property="og:site_name" content="Book of Mormon Adventures">
 <meta property="og:description" content="The story of Nephi from the Book of Mormon, retold for young readers. Read it like a book — swipe, tap, turn the page.">
-<meta property="og:image" content="og-image.png">
+<meta property="og:image" content="https://crunchmasterdeluxe.github.io/The_Book_of_Mormon--1_Nephi/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Nephi and The Long Way Home — book cover">
+<meta property="og:url" content="https://crunchmasterdeluxe.github.io/The_Book_of_Mormon--1_Nephi/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nephi and The Long Way Home">
 <meta name="twitter:description" content="The story of Nephi from the Book of Mormon, retold for young readers.">
-<meta name="twitter:image" content="og-image.png">
+<meta name="twitter:image" content="https://crunchmasterdeluxe.github.io/The_Book_of_Mormon--1_Nephi/og-image.png">
 <meta name="description" content="The story of Nephi from the Book of Mormon, retold for young readers. Read it like a book.">
 <style>
   :root{
@@ -25,7 +26,8 @@
     --muted:#8a7a5f;
     --accent:#b8863b;
     --mx:22px;            /* page side margin  */
-    --bar:34px;           /* header/footer height */
+    --bar:34px;           /* top bar height */
+    --botbar:52px;        /* bottom bar height (bigger tap target for contents) */
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{
@@ -47,7 +49,7 @@
     z-index:5;
   }
   footer#bar-bot{
-    height:calc(var(--bar) + env(safe-area-inset-bottom,0px));
+    height:calc(var(--botbar) + env(safe-area-inset-bottom,0px));
     padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px);
     justify-content:space-between;padding-left:16px;padding-right:16px;position:relative;
     background:linear-gradient(#e9ddc2,#efe6cd);
@@ -580,7 +582,10 @@
   }
   function openTOC(){ buildTOC(); toc.classList.remove('toc-hidden'); }
   function closeTOC(){ toc.classList.add('toc-hidden'); }
-  elBot.addEventListener('click', openTOC);
+  // Open on a real touch (reliable on iOS) AND on click (desktop), deduped so it fires once.
+  var _lastTouch = 0;
+  elBot.addEventListener('touchend', function(e){ _lastTouch = Date.now(); e.preventDefault(); openTOC(); }, {passive:false});
+  elBot.addEventListener('click', function(){ if(Date.now() - _lastTouch < 700) return; openTOC(); });
   toc.addEventListener('click', function(e){ if(e.target === toc) closeTOC(); });
   document.getElementById('toc-close').addEventListener('click', function(e){ e.stopPropagation(); closeTOC(); });
 
